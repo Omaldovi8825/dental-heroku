@@ -1,0 +1,12 @@
+.new-diagnosis-button{
+    padding: 10px 20px;
+    background-color: #894e77;
+    color: white;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+}
+
+.new-diagnosis-button:hover {
+    background-color: #7f3063;
+}

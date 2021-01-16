@@ -1,0 +1,49 @@
+.MenuInicio {
+    width: 40%;
+    height: 50%;
+    left: 7%;
+    bottom: 5%;
+    background-color:#7f3063;
+    border-radius: 20px;
+    position: absolute;
+    box-shadow:0px 0px 25px #7f3063;
+}
+
+.MenuInicio, .MenuInicio__innerSquare {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.MenuInicio__innerSquare{
+    width: 90%;
+    height: 90%;
+    background-color: #e1f4f3;
+
+}
+
+.MenuInicio__boton {
+    background-color: #7f6b79;
+    box-shadow: 1px 1px 20px  #7f6b79;
+    border-radius: 10px;
+    margin: 3% 0;
+    color: white;
+    text-decoration: none;
+    width: 50%;
+    text-align: center;
+    padding: 20px 0;
+    border: 2px solid #7f6b79;
+    font-family: 'Darker Grotesque';
+    font-size: 30px;    
+}
+
+.MenuInicio__boton:hover {
+    background-color: #75c6b8;
+    box-shadow: 1px 1px 20px  #fff;
+    color:#fff;
+    border: 2px solid #75c6b8;
+    text-shadow: 0px 0px 5px black;
+
+}
+

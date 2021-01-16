@@ -1,0 +1,7 @@
+.cards-area {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-image: url(https://i.ibb.co/3sgPmvg/Sin-ti-tulo-2-fondo.png);
+}
+

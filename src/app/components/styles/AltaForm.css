@@ -1,0 +1,42 @@
+
+.alta_form {
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+    padding: 30px;
+    background-color: #75c6b8;
+    box-shadow: 0px 0px 28px #7f3063;
+}
+
+.alta_form input, .alta_form select {
+    margin-bottom: 10px;
+    border: 1px solid #7f3063;
+}
+
+.alta_form input[type=number]{
+    width: 100px;
+}
+
+.alta_form input[type=text]{
+    width: 300px;
+}
+
+.alta_form button {
+    margin: auto;
+    font-size: 25px;
+    background-color: #894e77;
+    color: white;
+}
+
+.alta_form button:hover {
+    background-color: #7f3063;
+}
+
+.alta-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+}

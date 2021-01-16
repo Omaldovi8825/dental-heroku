@@ -1,0 +1,50 @@
+.user-link{
+    text-decoration: none;
+    color: black;
+}
+
+.search-card-container{
+    /* border: 1px solid black; */
+    width: 300px;
+    margin: 20px;
+}
+
+.card-container-up{
+    /* border: 10px solid #75c6b8; */
+    text-align: right;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #7f6b79;
+    color: white;
+}
+
+.card-container-up:hover{
+    /* border: 8px solid #7f3063; */  
+    background-color: #7f3063;
+}
+
+.card-container-up p{
+    margin-top: 0;
+}
+
+.card-container-up img{
+    width: 150px;
+    display: block;
+    margin: auto;
+}
+
+.card-container-down {
+    /* border: 8px solid #7f3063; */
+    border-radius: 5px;
+    text-align: center;
+    background-color: #75c6b8;;
+    padding: 5px;
+    color: #7f3063;
+}
+
+.card-container-down:hover {
+    /* border: 8px solid #7f3063; */
+    background-color: #7f3063;
+    color: white;
+}

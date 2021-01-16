@@ -1,0 +1,30 @@
+.search-header{
+    /* border: 1px solid black; */
+    background-color: #e1f4f3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0px 10px 28px #7f6b79;
+    color: #7f3063;
+    margin-bottom: 40px;
+}
+
+.search-header input{
+    width: 400px;
+    border: 2px solid #7f6b79;
+    box-shadow: 0px 0px 28px #7f3063;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin-left: 20px;
+}
+
+.search-header h1 {
+    font-family: 'Darker Grotesque';
+    font-size: 80px;
+    margin: 0;
+}
+
+.search-header-logo{
+    width: 140px;
+}

@@ -1,0 +1,44 @@
+/* colors */
+/* #7f3063 */
+/* #7f6b79 */
+/* #75c6b8 */
+/* #e1f4f3 */
+
+/* @font-face {
+    font-family: 'rounded';
+    src: url(./fonts/arlrdbd.ttf);
+  } */
+  
+  * {
+    box-sizing: border-box;
+    font-family: 'Darker Grotesque';
+    font-size: 24px;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  .prm-button {
+    border-radius: 8px;
+    border: none;
+    padding: 10px 20px;
+    background-color: #fff;
+    font-size: 18px;
+  }
+  
+  input, select {
+    outline: none;
+    /* padding: 5px; */
+    border-radius: 5px;
+    border: none;
+  }
+  
+  button {
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .h1 {
+    font-size: 30px;
+  }
