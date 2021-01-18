@@ -20,8 +20,10 @@ class Search extends Component {
         fetch('/api/pacientes')
             .then(res => res.json())
             .then(res => this.setState({
-                pacientes: res,
-                filteredPacientes: res,
+                pacientes: res
+            }))
+            .then(res => this.setState({
+                filteredPacientes: this.state.pacientes
             }))
             .catch(err => console.error(err.message))
     }

@@ -9,16 +9,16 @@ const Modal = (props) => {
 
     return null
 
-    // if(!isOpen){
-    //     return null
-    // }
+    if(!isOpen){
+        return null
+    }
 
-    // return ReactDOM.createPortal(
-    //     <div className="modal">
-    //         <i onClick={() => console.log('hola')} className="far fa-window-close"></i>
-    //         {children}
-    //     </div>, 
-    //     document.getElementById('modal'))
+    return ReactDOM.createPortal(
+        <div className="modal">
+            <i onClick={() => console.log('hola')} className="far fa-window-close"></i>
+            {children}
+        </div>, 
+        document.getElementById('modal'))
 }
 
 export default Modal

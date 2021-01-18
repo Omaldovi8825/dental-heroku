@@ -5,6 +5,7 @@ import Home from '../pages/Home'
 import Search from '../pages/Search'
 import Alta from '../pages/Alta'
 import PacienteDetails from '../pages/PacienteDetails'
+import PacienteEdit from '../pages/PacienteEdit'
 
 const App = () => {
     return(
@@ -13,6 +14,7 @@ const App = () => {
             <Route exact path='/search' component={Search} />            
             <Route exact path='/alta' component={Alta} />
             <Route exact path='/paciente/:pacienteId' component={PacienteDetails} />                        
+            <Route exact path='/paciente/:pacienteId/edit' component={PacienteEdit} />                        
         </HashRouter>
     )
 }

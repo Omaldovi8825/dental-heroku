@@ -1,0 +1,35 @@
+.delete-modal{
+    /* height: 100px; */
+    /* width: 200px; */
+    background-color: black;
+    color: white;
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 40px;
+}
+
+.delete-modal p{
+    margin: 0;
+}
+
+.delete-modal-buttons-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.delete-modal-buttons-container button{
+    border: none;
+    padding: 10px 20px;
+    color: white;
+}
+
+.delete-modal-buttons-container button:nth-child(1){
+    background-color: red;
+}
+
+.delete-modal-buttons-container button:nth-child(2){
+    background-color: green;
+}

@@ -1,9 +1,25 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 import './styles/AltaCard.css'
 
-const AltaCard = ({formValues}) => {
+const useCalcularEdad = fechaNacimiento => {
+    const [edad, setEdad] = useState(fechaNacimiento)
 
+    useEffect(() => {
+        if(!fechaNacimiento){
+            setEdad('')
+        } else {
+            let calculateEdad = Math.floor((((((new Date() - new Date(fechaNacimiento) )/1000)/60)/60)/24)/365) 
+            let edad = calculateEdad.toString()
+            setEdad(edad)
+        }
+    }, [fechaNacimiento])
+
+    return edad
+}
+
+const AltaCard = ({formValues}) => {
+    
     const {
         nombre, 
         apellido, 
@@ -17,6 +33,8 @@ const AltaCard = ({formValues}) => {
         fechaNacimiento,
         estadoCivil,    
     } = formValues
+
+    const edad = useCalcularEdad(fechaNacimiento)
 
     return(
         <div className="card-container">
@@ -35,6 +53,7 @@ const AltaCard = ({formValues}) => {
                 <p>Teléfono celular: <span>{celular}</span></p>
                 <p>Correo electrónico: <span>{email}</span></p>
                 <p>Fecha de nacimiento: <span>{fechaNacimiento}</span></p>
+                <p>Edad: <span>{edad}</span></p>                
                 <p>Estado civil: <span>{estadoCivil}</span></p>
             </div>
         </div>

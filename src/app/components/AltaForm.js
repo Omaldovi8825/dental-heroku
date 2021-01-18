@@ -2,7 +2,7 @@ import React from 'react'
 
 import './styles/AltaForm.css'
 
-const AltaForm = ({handleChange, formValues, handleSubmit}) => {
+const AltaForm = ({handleChange, formValues, handleSubmit, buttonName}) => {
     return(
         <form className="alta_form" onSubmit={handleSubmit}>
             <label>Nombre</label>
@@ -40,7 +40,7 @@ const AltaForm = ({handleChange, formValues, handleSubmit}) => {
                 onChange={handleChange}
                 value={formValues.folio}
             />      
-            <label>Condicion</label>
+            <label>Diagnóstico</label>
             <input 
                 name="condicion" 
                 type="text"
@@ -83,7 +83,7 @@ const AltaForm = ({handleChange, formValues, handleSubmit}) => {
             <button 
                 type="submit"
                 className="prm-button">
-                    Crear
+                    {buttonName}
             </button>      
         </form>
     )

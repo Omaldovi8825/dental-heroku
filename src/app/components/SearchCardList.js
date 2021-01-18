@@ -13,7 +13,7 @@ const SearchCardList = ({pacientes}) => {
             {pacientes.map((paciente) => {
                 return(
                     <SearhCard 
-                        key={paciente.folio}
+                        key={paciente._id}
                         pacienteInfo={paciente}
                     />
                 )

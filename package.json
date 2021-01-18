@@ -5,20 +5,25 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.js",
-    "webpack": "webpack --mode production"
+    "start": "nodemon src/server.js",
+    "dev": "webpack --mode development --watch",
+    "prod": "webpack --mode production"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.12"
+  },
+  "devDependencies": {
+    "multer": "^1.4.2",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
-    "express": "^4.17.1",
-    "mongoose": "^5.11.12",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",

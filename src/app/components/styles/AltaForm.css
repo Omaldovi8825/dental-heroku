@@ -19,7 +19,11 @@
     width: 100px;
 }
 
-.alta_form input[type=text]{
+.alta_form input[type=text] {
+    width: 300px;
+}
+
+.alta_form input[type=email] {
     width: 300px;
 }
 

@@ -1,3 +1,23 @@
+.modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background-color: #000000b8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fa-window-close{
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 40px;
+}
+
 .new-diagnosis-button{
     padding: 10px 20px;
     background-color: #894e77;
@@ -10,3 +30,26 @@
 .new-diagnosis-button:hover {
     background-color: #7f3063;
 }
+
+.new-diagnosis-area{
+    width: 1000px;
+    /* height: 500px; */
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    /* overflow: auto; */
+}
+
+.new-diagnosis-area table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.new-diagnosis-area th, td {
+    border: 1px solid black;
+}
+
+.new-diagnosis-area input {
+    width: 100%;
+}
+

@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const {password, dbName, port} = require('./network/config.js')
 
 const router = require('./network/routes.js')
@@ -11,6 +12,7 @@ const dbUrl = `mongodb+srv://nodejs_user:${password}@cluster0.aas0d.mongodb.net/
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 app.use('/', express.static(path.join(`${__dirname}/public`)))
 

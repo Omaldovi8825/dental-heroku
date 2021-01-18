@@ -1,0 +1,17 @@
+.diagnosis-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.diagnosis-table th{
+    border: 1px solid black;
+}
+
+.diagnosis-table td{
+    border: 1px solid black;
+    text-align: center;
+}
+
+.diagnosis-table th:nth-child(3){
+    width: 35%;
+}

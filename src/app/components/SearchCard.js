@@ -4,9 +4,9 @@ import {Link} from 'react-router-dom'
 import './styles/SearchCard.css'
 
 const SearchCard = (props) => {
-    const {nombre, apellido, apellido2, foto, folio, condicion} = props.pacienteInfo
+    const {nombre, apellido, apellido2, foto, folio, condicion, _id} = props.pacienteInfo
     return(
-        <Link to={`paciente/${folio}`} className="user-link">
+        <Link to={`paciente/${_id}`} className="user-link">
             <div className="search-card-container">
                 <div className="card-container-up">
                     <p>Folio: {folio}</p>

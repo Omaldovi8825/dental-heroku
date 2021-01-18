@@ -2,89 +2,117 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 
 import HistorialHeader from '../components/HistorialHeader'
-import Diagnosis from '../components/Diagnosis'
 import NewDiagnosis from '../components/NewDiagnosis'
+import DiagnosisList from '../components/DiagnosisList'
+
+import {getPacienteData} from '../apiCalls'
 
 import './styles/PacienteDetails.css'
 
 class ClientDetails extends Component {
+
+    constructor(){
+        super()
+        this.state = {
+            paciente: {},
+            edad: '',
+            newDiagnosisIsOpened: false,
+        }
+
+        this.openDiagnosisModal = this.openDiagnosisModal.bind(this)
+        this.closeDiagnosisModal = this.closeDiagnosisModal.bind(this)
+    }
    
-    // openModal = () => {
-    //     this.setState({
-    //         modalOpen: true
-    //     })
-    // }
+    openDiagnosisModal(e) {
+        this.setState({
+            newDiagnosisIsOpened: true       
+        })
+    }
 
-    // closeModal = () => {
-    //     this.setState({
-    //         modalOpen: false
-    //     })
-    // }
+    closeDiagnosisModal(e) {
+        this.setState({
+            newDiagnosisIsOpened: false
+        })
+    }
 
-    // openNewDiagnosis = e => {
-    //     this.setState({
-    //         newDiagnosis: true
-    //     })
-    // }
+    componentDidMount(){
+        fetch(`api/pacientes/${this.props.match.params.pacienteId}`)
+            .then(data => data.json())
+            .then(paciente => {
+                let fechaExtraida = paciente.fechaNacimiento
+                const edad =  Math.floor((((((new Date() - new Date(fechaExtraida))/1000)/60)/60)/24)/365)
 
-    // handleCloseDiagnosisModal = e => {
-    //     this.setState({
-    //         newDiagnosis: false
-    //     })
-    // }
+                this.setState({
+                    paciente: paciente,
+                    edad: edad
+                })
+            })
+            .catch(err => console.log('error al conectarse'))
+    }
 
     render(){
+
+        const {
+            nombre, 
+            apellido, 
+            apellido2, 
+            folio, 
+            foto, 
+            telefono, 
+            celular, 
+            condicion, 
+            email, 
+            estadoCivil, 
+            fechaAlta, 
+            fechaNacimiento} = this.state.paciente
+
         return(
             <div>
                 <HistorialHeader />
                 <div className="historial-area">
-                    <div className="historial-area-buttons">
-                        <Link to="/">
-                            <img src="https://i.ibb.co/mTZV5pL/denti-diagnostico.png" alt="nuevo diagnostico"/>
-                        </Link>
-                        <button 
-                            type="button"
-                            onClick={() => console.log('hola')}>
-                            <img src="https://i.ibb.co/RQpnSjK/denti-agenda.png" alt="nueva nota"/>
-                        </button>
-                        <NewDiagnosis 
-                            isOpen='hola'
-                            closeDiagnosisModal='hols'
-                        />
+                    <div className="historial-area-up">
+                        <div className="historial-area-buttons">
+                            <Link to={`${this.props.match.params.pacienteId}/edit`}>
+                                <img src="https://i.ibb.co/mTZV5pL/denti-diagnostico.png" alt="nuevo diagnostico"/>
+                            </Link>
+                            <button 
+                                type="button"
+                                onClick={this.openDiagnosisModal}>
+                                <img src="https://i.ibb.co/RQpnSjK/denti-agenda.png" alt="nueva nota"/>
+                            </button>
+                            <NewDiagnosis 
+                                isOpen={this.state.newDiagnosisIsOpened}
+                                closeDiagnosisModal={this.closeDiagnosisModal}
+                            />
+                        </div>
+                        <div className="historial-data-container">
+                            <div className="historial-data-container-up">
+                                <div className="historial-id-data">
+                                    <p>Folio: {folio}</p>
+                                    <img src={foto} alt="foto paciente"/>
+                                    <h1>{nombre} 
+                                    <br/>{apellido}
+                                    <br/>{apellido2}
+                                    </h1>
+                                    <p>({condicion})</p>
+                                </div>
+                                <div className="historial-user-data">
+                                    <p>Telefono fijo: <span>{telefono}</span></p>
+                                    <p>Celular: <span>{celular}</span></p>
+                                    <p>Fecha de ingreso: <span>{fechaAlta}</span></p>
+                                    <p>Fecha de nacimiento: <span>{fechaNacimiento}</span></p>
+                                    <p>Edad: <span>{this.state.edad}</span></p>
+                                    <p>Estado civil: <span>{estadoCivil}</span></p>
+                                    <p>E-mail: <span>{email}</span></p>                                
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="historial-data-container">
-                        <div className="historial-data-container-up">
-                            <div className="historial-id-data">
-                                <p>Folio: 1</p>
-                                <h1>Juan 
-                                <br/>Hernandez
-                                <br/>Melendez
-                                </h1>
-                                <p>diabetes</p>
-                            </div>
-                            <div className="historial-user-data">
-                                <p>Telefono fijo: <span>722345676</span></p>
-                                <p>Celular: <span>7223456787</span></p>
-                                <p>Fecha de ingreso: <span>12/10/2009</span></p>
-                                <p>Fecha de nacimiento: <span>12/09/09</span></p>
-                                <p>Lugar de nacimiento: <span>Toluca</span></p>
-                                <p>Estado civil: <span>solter@</span></p>
-                            </div>
-                        </div>
-                        <div className="historial-data-container-down">
-                        <Diagnosis 
-                            fecha="12/10/2019" 
-                            isOpen="si" 
-                            openModal="no"
-                            closeModal="si"    
-                        />
-                        <Diagnosis fecha="13/09/2018" />
-                        <Diagnosis fecha="15/04/2018" />
-                        <Diagnosis fecha="23/07/2016" />
-                        <Diagnosis fecha="15/03/2012" />
-                        </div>
+                    <div className="historial-data-container-down">
+                        <DiagnosisList openDiagnosisEdit={this.openDiagnosisModal}/>
                     </div>
                 </div>
+
             </div>
         )
     }

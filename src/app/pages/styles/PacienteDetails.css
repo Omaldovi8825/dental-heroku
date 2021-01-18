@@ -1,17 +1,20 @@
 .historial-area{
-    display: flex;
     width: 1000px;
     margin: auto;
-    justify-content: space-around; 
     margin-top: 20px;   
     background-image: url(https://i.ibb.co/3sgPmvg/Sin-ti-tulo-2-fondo.png);
     background-color: white;
 }
 
+.historial-area-up{
+    display: flex;
+    justify-content: space-around;
+}
+
 .historial-area-buttons{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     /* border: 1px solid black; */
 }
@@ -19,7 +22,6 @@
 .historial-area-buttons button{
     border: none;
     background: transparent;
-    margin: 80px 0;
 }
 
 .historial-area-buttons img{
@@ -34,14 +36,10 @@
 
 .historial-data-container-up{
     display: flex;
-    margin-bottom: 20px;
 }
 
 .historial-data-container-down{
     /* border: 8px solid #7f6b79; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: #bababa;
 }
 
@@ -53,15 +51,26 @@
 }
 
 .historial-id-data h1 {
-    font-size: 54px;
+    font-size: 40px;
+    margin: 0;
 }
 
 .historial-id-data p {
     font-size: 30px;
+    color: #7f3063;
+    font-weight: bold;
+}
+
+.historial-id-data img {
+    width: 100px;
+    border-radius: 50%;
 }
 
 .historial-user-data{
     /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .historial-user-data span{
@@ -69,6 +78,23 @@
     font-weight: bold;
 }
 
+.historial-user-data p{
+    margin: 15px 0;
+}
+
 .historial-id-data, .historial-user-data {
     padding: 20px;
+}
+
+.fa-arrow-alt-circle-left{
+    font-size: 50px;
+}
+
+.delete-user {
+    border: none;
+    background: transparent;
+}
+
+.fa-user-times {
+    color: red;
 }

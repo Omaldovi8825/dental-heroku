@@ -19,7 +19,7 @@ class Alta extends Component {
             telefono: '',
             celular: '',
             email: '',
-            fechaNacimiento:'',
+            fechaNacimiento: '',
             estadoCivil:'solter@'  
         }
 
@@ -51,13 +51,13 @@ class Alta extends Component {
             }
         })
             .then(res => res.json())
-            .then(res => alert(res.status))
-            .catch(err => console.error(err.message))
+            .then(res => console.log(res.status))
+            .then(() => this.props.history.push('/search'))
+            .catch(err => console.log('algo anda mal'))
         
-        this.setState({
-            form: this.initialSatte 
-        })
-        
+        // this.setState({
+        //     form: this.initialSatte 
+        // })     
     }
 
     render(){
@@ -74,6 +74,7 @@ class Alta extends Component {
                     handleChange={this.handleChange} 
                     formValues={this.state.form}
                     handleSubmit={this.handleSubmit}
+                    buttonName='Crear'
                 />
             </div>
         )
