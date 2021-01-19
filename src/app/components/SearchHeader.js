@@ -8,13 +8,13 @@ const SearchHeader = ({handleSearch}) => {
     return(
         <header className="search-header">
             <h1>Consulta</h1>
-            <i className="fas fa-search">
+            <i className="fas fa-search search-ikon">
             <input 
                 type="text"
                 onChange={handleSearch}
             />
             </i>
-            <Link to="/">
+            <Link to="/alta">
                 <img className="search-header-logo" src={logoInicio} alt="logo inicio" />
             </Link>
         </header>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
 import './styles/Menu.css'
 
@@ -8,19 +8,23 @@ const Icon = () => {
     ) 
 }
 
-const BotonInicio = (props) => {
+const BotonInicio = ({route, name}) => {
     return(
         <Link 
-            to={props.route} 
+            to={route} 
             className="MenuInicio__boton">
-                {props.name}
+                {name}
         </Link>
     )
 }
 
 const Menu = () => {
-        return(
-            <div className="MenuInicio">
+    const [isOpen, setIsOpen] = useState('')
+    const password = 'caries'
+
+    return(
+        <div className="MenuInicio">
+            {isOpen === password && 
                 <div className="MenuInicio__innerSquare">
                     <BotonInicio name="Alta" route="/alta"/>
                     <Link 
@@ -32,8 +36,18 @@ const Menu = () => {
                     </Link>
                     <BotonInicio name="Agenda" route="/" />
                 </div>
-            </div>
-        )
+            }
+            {isOpen !== password &&
+                <div className="fake-login">
+                    <label>Contraseña</label>
+                    <input 
+                        type="password" 
+                        onChange={e => setIsOpen(e.target.value)}
+                    />
+                </div>
+            }
+        </div>
+    )
 }
 
 export default Menu

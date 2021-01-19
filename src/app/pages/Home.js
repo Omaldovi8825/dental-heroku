@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import './styles/Home.css'
 import Menu from '../components/Menu'
 import Logo from '../components/Logo'
@@ -11,16 +11,16 @@ const ChangingArea = ()=> {
     )
 }
 
-class Inicio extends Component {
-    render(){
-        return(
-            <div className="blue-container">
-                <Logo />
-                <Menu />
-                <ChangingArea />
-            </div>
-        )
-    }
+const Inicio = () => {
+
+    return(
+        <div className="blue-container">
+            <Logo />
+            <Menu />
+            <ChangingArea />
+        </div>
+    )
 }
+
 
 export default Inicio

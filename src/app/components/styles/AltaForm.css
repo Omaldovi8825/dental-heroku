@@ -44,3 +44,17 @@
     left: 20px;
     width: 80px;
 }
+
+@media only screen and (max-width:560px){
+    .alta_form input[type=text] {
+        width: 100%;
+    }
+
+    .alta_form input[type=email] {
+        width: 100%;
+    }    
+
+    .alta_form{
+        padding: 20px;
+    }
+}
