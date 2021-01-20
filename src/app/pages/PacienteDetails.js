@@ -16,6 +16,7 @@ class ClientDetails extends Component {
         this.state = {
             paciente: {},
             edad: '',
+            ingreso: '',
             newDiagnosisIsOpened: false,
         }
 
@@ -41,10 +42,12 @@ class ClientDetails extends Component {
             .then(paciente => {
                 let fechaExtraida = paciente.fechaNacimiento
                 const edad =  Math.floor((((((new Date() - new Date(fechaExtraida))/1000)/60)/60)/24)/365)
+                const ingreso = paciente.fechaAlta.substr(0,10)
 
                 this.setState({
                     paciente: paciente,
-                    edad: edad
+                    edad: edad,
+                    ingreso: ingreso
                 })
             })
             .catch(err => console.log('error al conectarse'))
@@ -99,7 +102,7 @@ class ClientDetails extends Component {
                                 <div className="historial-user-data">
                                     <p>Telefono fijo: <span>{telefono}</span></p>
                                     <p>Celular: <span>{celular}</span></p>
-                                    <p>Fecha de ingreso: <span>{fechaAlta}</span></p>
+                                    <p>Fecha de ingreso: <span>{this.state.ingreso}</span></p>
                                     <p>Fecha de nacimiento: <span>{fechaNacimiento}</span></p>
                                     <p>Edad: <span>{this.state.edad}</span></p>
                                     <p>Estado civil: <span>{estadoCivil}</span></p>

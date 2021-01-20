@@ -4,7 +4,7 @@ import './styles/Logo.css'
 
 const Logo = (props) => {
     return(
-        <Link to="/search">
+        <Link to="/menu">
             <img 
                 className={props.className || "Inicio_logo"} 
                 src="https://i.ibb.co/HKZpPN7/denti-home.png" 

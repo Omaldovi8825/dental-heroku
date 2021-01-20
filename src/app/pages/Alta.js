@@ -5,6 +5,7 @@ import './styles/Alta.css'
 import AltaForm from '../components/AltaForm'
 import AltaCard from '../components/AltaCard'
 import Logo from '../components/Logo'
+import SearchLink from '../components/SearchLink'
 
 class Alta extends Component {
     constructor(){
@@ -66,6 +67,7 @@ class Alta extends Component {
                 <div className="alta-left-side">
                     <div className="alta-header">
                         <h1>Alta</h1>
+                        <SearchLink medida='80px'/>
                         <Logo className="container-alta-logo"/>
                     </div>
                     <AltaCard formValues={this.state.form}/>

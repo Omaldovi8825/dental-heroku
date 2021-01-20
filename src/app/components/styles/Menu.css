@@ -6,7 +6,7 @@
     background-color:#7f3063;
     border-radius: 20px;
     position: absolute;
-    box-shadow:0px 0px 25px #7f3063;
+    box-shadow:0px 0px 25px #0bf8f8;
 }
 
 .MenuInicio, .MenuInicio__innerSquare {
@@ -57,3 +57,17 @@
     text-align: center;
 }
 
+@media only screen and (max-width:560px){
+    .MenuInicio{
+        width: 100%;
+        position: static; 
+        margin-top: 20px;
+        height: 300px;
+    }
+
+    .MenuInicio__boton {
+        padding: 10px;
+        width: 70%;
+    }
+
+}

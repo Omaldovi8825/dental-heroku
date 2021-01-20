@@ -20,6 +20,7 @@ const NewDiagnosis = (props) => {
                     <tr>
                         <th>Diagnostico</th>
                         <th>Tratamiento</th>
+                        <th>P.D.</th>
                         <th>Cuota</th>
                         <th>A cuenta</th>
                     </tr>
@@ -28,8 +29,9 @@ const NewDiagnosis = (props) => {
                     <tr>
                         <td><input type="text"/></td>
                         <td><input type="text"/></td>
-                        <td><input type="text"/></td>
-                        <td><input type="text"/></td>
+                        <td><input type="text" style={{textAlign: 'center'}}/></td>
+                        <td><input type="text" style={{textAlign: 'center'}}/></td>
+                        <td><input type="text" style={{textAlign: 'center'}}/></td>
                     </tr>
                 </tbody>
             </table>

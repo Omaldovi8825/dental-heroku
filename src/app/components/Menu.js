@@ -19,12 +19,12 @@ const BotonInicio = ({route, name}) => {
 }
 
 const Menu = () => {
-    const [isOpen, setIsOpen] = useState('')
-    const password = 'caries'
+    // const [isOpen, setIsOpen] = useState('')
+    // const password = 'caries'
 
     return(
         <div className="MenuInicio">
-            {isOpen === password && 
+            {/* {isOpen === password &&  */}
                 <div className="MenuInicio__innerSquare">
                     <BotonInicio name="Alta" route="/alta"/>
                     <Link 
@@ -36,8 +36,8 @@ const Menu = () => {
                     </Link>
                     <BotonInicio name="Agenda" route="/" />
                 </div>
-            }
-            {isOpen !== password &&
+            {/* } */}
+            {/* {isOpen !== password &&
                 <div className="fake-login">
                     <label>Contraseña</label>
                     <input 
@@ -45,7 +45,7 @@ const Menu = () => {
                         onChange={e => setIsOpen(e.target.value)}
                     />
                 </div>
-            }
+            } */}
         </div>
     )
 }

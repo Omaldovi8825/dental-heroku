@@ -57,7 +57,7 @@ const DiagnosisList = ({openDiagnosisEdit}) => {
                     <th>Fecha</th>
                     <th>Diagnostico</th>
                     <th>Tratamiento</th>
-                    <th>Diente</th>
+                    <th>P.D</th>
                     <th>Cuota</th>
                     <th>A cuenta</th>
                     <th>Editar</th>

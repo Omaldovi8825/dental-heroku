@@ -14,7 +14,7 @@ const SearchHeader = ({handleSearch}) => {
                 onChange={handleSearch}
             />
             </i>
-            <Link to="/alta">
+            <Link to="/menu">
                 <img className="search-header-logo" src={logoInicio} alt="logo inicio" />
             </Link>
         </header>

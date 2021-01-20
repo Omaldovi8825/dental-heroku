@@ -26,8 +26,7 @@
 .blue-container {
     width: 1000px;
     height: 800px;
-    background-image: url("https://i.ibb.co/3sgPmvg/Sin-ti-tulo-2-fondo.png");
-    background-color: #00065c;
+    background-image: url("https://i.ibb.co/h7TSVWn/denti-foto.png");
     margin: auto;
     position: relative;
     margin-top: 20px;
@@ -38,4 +37,18 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+  }
+
+  @media only screen and (max-width:560px){
+      .flex-column{
+          display: none;
+      }
+
+      .blue-container{
+          width: unset;
+          margin-top: 0;
+          position: static;
+          padding: 50px 10px 0;
+          height: 100vh;
+      }
   }

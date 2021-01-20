@@ -4,14 +4,26 @@
 }
 
 .diagnosis-table th{
-    border: 1px solid black;
+    /* border: 1px solid #7f3063; */
+    background-color: #7f3063;
+    color: white;
 }
 
 .diagnosis-table td{
-    border: 1px solid black;
+    border: 1px solid #7f3063;
+    background-color: #e1f4f3;
     text-align: center;
 }
 
 .diagnosis-table th:nth-child(3){
     width: 35%;
+}
+
+.diagnosis-table button{
+    border: none;
+    background: transparent;
+}
+
+.diagnosis-table i {
+    color: #077182;
 }

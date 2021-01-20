@@ -1,7 +1,6 @@
 import React from 'react'
 import './styles/Home.css'
 import Menu from '../components/Menu'
-import Logo from '../components/Logo'
 
 const ChangingArea = ()=> {
     return(
@@ -15,7 +14,7 @@ const Inicio = () => {
 
     return(
         <div className="blue-container">
-            <Logo />
+            <img className="Inicio_logo" src="https://i.ibb.co/HKZpPN7/denti-home.png" />
             <Menu />
             <ChangingArea />
         </div>

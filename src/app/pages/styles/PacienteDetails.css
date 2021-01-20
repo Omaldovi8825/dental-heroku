@@ -2,13 +2,14 @@
     width: 1000px;
     margin: auto;
     margin-top: 20px;   
-    background-image: url(https://i.ibb.co/3sgPmvg/Sin-ti-tulo-2-fondo.png);
+    background-image: url('https://i.ibb.co/h7TSVWn/denti-foto.png');
     background-color: white;
 }
 
 .historial-area-up{
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .historial-area-buttons{
@@ -16,6 +17,10 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    background-color: #ffffffde;
+    border-radius: 20px;
+    padding: 0 50px;
+    height: 400px;
     /* border: 1px solid black; */
 }
 
@@ -39,8 +44,7 @@
 }
 
 .historial-data-container-down{
-    /* border: 8px solid #7f6b79; */
-    background-color: #bababa;
+    margin-top: 24px;
 }
 
 .historial-id-data{
@@ -88,6 +92,7 @@
 
 .fa-arrow-alt-circle-left{
     font-size: 50px;
+    color: #077182;
 }
 
 .delete-user {
@@ -96,5 +101,6 @@
 }
 
 .fa-user-times {
-    color: red;
+    color: #ce1152;
+    font-size: 40px;
 }

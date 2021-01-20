@@ -53,3 +53,14 @@
     width: 100%;
 }
 
+.new-diagnosis-area th:nth-child(3){
+    width: 10%;
+}
+
+.new-diagnosis-area th:nth-child(4){
+    width: 10%;
+}
+
+.new-diagnosis-area th:nth-child(5){
+    width: 10%;
+}
