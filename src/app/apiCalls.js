@@ -1,13 +1,21 @@
-export function getPacienteData(url){
-    let datos 
-
-    fetch(url)
-        .then(data => data.json())
-        .then(data => datos = data)
-        .catch(err => console.log('algo salio mal'))
-       
-    console.log(datos)  
+export function getPacienteData(url){   
+    return new Promise((resolve, reject) => {
+        fetch(url)
+            .then(data => data.json())
+            .then(data => resolve(data))
+            .catch(err => reject(err))
+    })
 }
+
+export function getPacienteDiagnosis(url){
+    return new Promise((resolve, reject) => {
+        fetch(url)
+            .then(data => data.json())
+            .then(data => resolve(data))
+            .catch(err => reject(err))
+    })
+}
+
 
 
 

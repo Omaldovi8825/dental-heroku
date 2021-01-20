@@ -5,23 +5,34 @@ import HistorialHeader from '../components/HistorialHeader'
 import NewDiagnosis from '../components/NewDiagnosis'
 import DiagnosisList from '../components/DiagnosisList'
 
-import {getPacienteData} from '../apiCalls'
+import {getPacienteData, getPacienteDiagnosis} from '../apiCalls'
 
 import './styles/PacienteDetails.css'
 
 class ClientDetails extends Component {
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             paciente: {},
             edad: '',
             ingreso: '',
             newDiagnosisIsOpened: false,
+            diagnosticos: [],
+            newDiagnosisForm: {
+                paciente: this.props.match.params.pacienteId,
+                diagnostico: '',
+                tratamiento: '',
+                piezaDentaria: '',
+                cuota: '',
+                aCuenta: ''
+            } 
         }
 
         this.openDiagnosisModal = this.openDiagnosisModal.bind(this)
         this.closeDiagnosisModal = this.closeDiagnosisModal.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
    
     openDiagnosisModal(e) {
@@ -36,9 +47,43 @@ class ClientDetails extends Component {
         })
     }
 
+    handleChange(e){
+        let {name, value} = e.target
+        this.setState({
+            newDiagnosisForm: {
+                ...this.state.newDiagnosisForm,
+                [name]:value
+            }
+        })
+    }
+
+    handleSubmit(e){
+        fetch('api/diagnosticos', {
+            method: 'POST',
+            body: JSON.stringify(this.state.newDiagnosisForm),
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(res => console.log(res))
+            .then(() => {
+                getPacienteDiagnosis('api/diagnosticos')
+                .then(diagnosticos => {
+                    const filteredDiagnosis = diagnosticos.filter(diagnostico => diagnostico.paciente._id === this.props.match.params.pacienteId)
+                    this.setState({
+                        diagnosticos: filteredDiagnosis,
+                        newDiagnosisIsOpened: false
+                    }) 
+                })
+                .catch(err => console.log(err.message))
+            })
+            .catch(err => console.log(err))
+    }
+
     componentDidMount(){
-        fetch(`api/pacientes/${this.props.match.params.pacienteId}`)
-            .then(data => data.json())
+        getPacienteData(`api/pacientes/${this.props.match.params.pacienteId}`)
             .then(paciente => {
                 let fechaExtraida = paciente.fechaNacimiento
                 const edad =  Math.floor((((((new Date() - new Date(fechaExtraida))/1000)/60)/60)/24)/365)
@@ -51,6 +96,15 @@ class ClientDetails extends Component {
                 })
             })
             .catch(err => console.log('error al conectarse'))
+
+        getPacienteDiagnosis('api/diagnosticos')
+            .then(diagnosticos => {
+                const filteredDiagnosis = diagnosticos.filter(diagnostico => diagnostico.paciente._id === this.props.match.params.pacienteId)
+                this.setState({
+                    diagnosticos: filteredDiagnosis
+                }) 
+            })
+            .catch(err => console.log(err.message))
     }
 
     render(){
@@ -86,6 +140,9 @@ class ClientDetails extends Component {
                             <NewDiagnosis 
                                 isOpen={this.state.newDiagnosisIsOpened}
                                 closeDiagnosisModal={this.closeDiagnosisModal}
+                                saveNewDiagnosis={this.handleSubmit}
+                                onInputChange={this.handleChange}
+                                newDiagnosisForm={this.state.newDiagnosisForm}
                             />
                         </div>
                         <div className="historial-data-container">
@@ -112,7 +169,10 @@ class ClientDetails extends Component {
                         </div>
                     </div>
                     <div className="historial-data-container-down">
-                        <DiagnosisList openDiagnosisEdit={this.openDiagnosisModal}/>
+                        <DiagnosisList 
+                            openDiagnosisEdit={this.openDiagnosisModal}
+                            diagnosticos={this.state.diagnosticos}
+                        />
                     </div>
                 </div>
 

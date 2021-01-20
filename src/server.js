@@ -16,7 +16,8 @@ app.use(cors())
 
 app.use('/', express.static(path.join(`${__dirname}/public`)))
 
-app.use('/api/pacientes', router)
+// app.use('/api/pacientes', router)
+router(app)
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,

@@ -5,7 +5,7 @@ import './styles/NewDiagnosis.css'
 
 const NewDiagnosis = (props) => {
 
-    let {isOpen, closeDiagnosisModal} = props
+    let {isOpen, closeDiagnosisModal, saveNewDiagnosis, onInputChange, newDiagnosisForm} = props
 
     if(!isOpen){
         return null
@@ -27,11 +27,49 @@ const NewDiagnosis = (props) => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="text"/></td>
-                        <td><input type="text"/></td>
-                        <td><input type="text" style={{textAlign: 'center'}}/></td>
-                        <td><input type="text" style={{textAlign: 'center'}}/></td>
-                        <td><input type="text" style={{textAlign: 'center'}}/></td>
+                        <td>
+                            <input 
+                                type="text" 
+                                name="diagnostico"
+                                onChange={onInputChange}
+                                value={newDiagnosisForm.diagnostico}    
+                            />
+                        </td>
+                        <td>
+                            <input 
+                                type="text"
+                                name="tratamiento"
+                                onChange={onInputChange}
+                                value={newDiagnosisForm.tratamiento}    
+                            />
+                        </td>
+                        <td>
+                            <input 
+                                type="text" 
+                                style={{textAlign: 'center'}}
+                                name="piezaDentaria"
+                                onChange={onInputChange}
+                                value={newDiagnosisForm.piezaDentaria}
+                            />
+                        </td>
+                        <td>
+                            <input 
+                                type="text" 
+                                style={{textAlign: 'center'}}
+                                name="cuota"
+                                onChange={onInputChange}
+                                value={newDiagnosisForm.cuota}
+                            />
+                        </td>
+                        <td>
+                            <input 
+                                type="text" 
+                                style={{textAlign: 'center'}}
+                                name="aCuenta"
+                                onChange={onInputChange}
+                                value={newDiagnosisForm.aCuenta}
+                            />
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -39,7 +77,7 @@ const NewDiagnosis = (props) => {
             <button 
                 className="new-diagnosis-button"
                 type="button"
-                onClick={closeDiagnosisModal}
+                onClick={saveNewDiagnosis}
             >
                 Guardar
             </button>

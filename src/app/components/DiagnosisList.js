@@ -3,14 +3,14 @@ import React from 'react'
 import './styles/DiagnosisList.css'
 
 const NewDiagnostico = ({diagnoInfo, openDiagnosisEdit}) => {
-    const {diagnostico, fecha, tratamiento, cuota, aCuenta, diente} = diagnoInfo 
+    const {diagnostico, fecha, tratamiento, cuota, aCuenta, piezaDentaria} = diagnoInfo 
 
     return(
         <tr>
             <td>{fecha}</td>
             <td>{diagnostico}</td>
             <td>{tratamiento}</td>
-            <td>{diente}</td>
+            <td>{piezaDentaria}</td>
             <td>{cuota}</td>
             <td>{aCuenta}</td>
             <td>
@@ -22,34 +22,7 @@ const NewDiagnostico = ({diagnoInfo, openDiagnosisEdit}) => {
     )
 }
 
-const DiagnosisList = ({openDiagnosisEdit}) => {
-    const diagnosticos = [
-        {
-            fecha:'10-10-2020',
-            diagnostico: 'caries',
-            tratamiento: 'quitar caires',
-            diente: 15,
-            cuota: 2500,
-            aCuenta: 1200
-        },
-        {
-            fecha:'13-11-2018',
-            diagnostico: 'muela rota',
-            tratamiento: 'pegar muela',
-            diente: 18,
-            cuota: 1800,
-            aCuenta: 1000
-        },
-        {
-            fecha:'10-09-2015',
-            diagnostico: 'dientes feos',
-            tratamiento: 'limpieza dental',
-            diente: 28,
-            cuota: 1500,
-            aCuenta: 850
-        },
-    ]
-
+const DiagnosisList = ({openDiagnosisEdit, diagnosticos}) => {
     return(
         <table className="diagnosis-table">
             <thead>
