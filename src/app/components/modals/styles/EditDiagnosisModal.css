@@ -1,0 +1,26 @@
+.edit-diagnosis{
+    width: 500px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.edit-diagnosis button {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+.edit-diagnosis button:hover {
+    box-shadow: 0 0 10px #f7eedd;
+}
+
+.edit-diagnosis button:nth-child(1) {
+    background-color: #0aad0a;
+}
+
+.edit-diagnosis button:nth-child(2) {
+    background-color: #b10a41;
+}

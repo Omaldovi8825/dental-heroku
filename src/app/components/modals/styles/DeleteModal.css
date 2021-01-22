@@ -1,13 +1,14 @@
 .delete-modal{
     /* height: 100px; */
     /* width: 200px; */
-    background-color: black;
+    background-color: #253952ed;
     color: white;
     position: fixed;
     top: 50px;
     left: 50%;
     transform: translateX(-50%);
     padding: 40px;
+    border-radius: 10px;
 }
 
 .delete-modal p{
@@ -24,12 +25,17 @@
     border: none;
     padding: 10px 20px;
     color: white;
+    border-radius: 10px;
 }
 
 .delete-modal-buttons-container button:nth-child(1){
-    background-color: red;
+    background-color: #b10a41;
 }
 
 .delete-modal-buttons-container button:nth-child(2){
-    background-color: green;
+    background-color: #0aad0a;
+}
+
+.delete-modal-buttons-container button:hover {
+    box-shadow: 0 0 10px #f7eedd;
 }

@@ -2,19 +2,20 @@ import React from 'react'
 
 import './styles/DiagnosisList.css'
 
-const NewDiagnostico = ({diagnoInfo, openDiagnosisEdit}) => {
-    const {diagnostico, fecha, tratamiento, cuota, aCuenta, piezaDentaria} = diagnoInfo 
+const NewDiagnostico = ({diagnoInfo, openDiagnosisEdit }) => {
+    const {diagnostico, fecha, tratamiento, cuota, aCuenta, piezaDentaria, _id} = diagnoInfo 
+    const fechaRecortada = fecha.substr(0, 10)
 
     return(
         <tr>
-            <td>{fecha}</td>
+            <td>{fechaRecortada}</td>
             <td>{diagnostico}</td>
             <td>{tratamiento}</td>
             <td>{piezaDentaria}</td>
             <td>{cuota}</td>
             <td>{aCuenta}</td>
             <td>
-                <button type="button" onClick={openDiagnosisEdit}>
+                <button type="button" onClick={() => openDiagnosisEdit(_id)}>
                     <i className="fas fa-edit"></i>
                 </button>
             </td>
@@ -37,10 +38,10 @@ const DiagnosisList = ({openDiagnosisEdit, diagnosticos}) => {
                 </tr>
             </thead>
             <tbody>
-                {diagnosticos.map((diagnostico, index) =>{
+                {diagnosticos.map( diagnostico => {
                     return(
                         <NewDiagnostico 
-                            key={index}
+                            key={diagnostico._id}
                             diagnoInfo={diagnostico}
                             openDiagnosisEdit={openDiagnosisEdit}
                         />

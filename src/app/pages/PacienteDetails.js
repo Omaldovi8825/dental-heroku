@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 import HistorialHeader from '../components/HistorialHeader'
 import NewDiagnosis from '../components/NewDiagnosis'
 import DiagnosisList from '../components/DiagnosisList'
+import EditDiagnosisModal from '../components/modals/EditDiagnosisModal'
 
-import {getPacienteData, getPacienteDiagnosis} from '../apiCalls'
+import {getPacienteData, getPacienteDiagnosis, deleteDiagnosis, postNewDiagnosis} from '../apiCalls'
 
 import './styles/PacienteDetails.css'
 
@@ -26,13 +27,18 @@ class ClientDetails extends Component {
                 piezaDentaria: '',
                 cuota: '',
                 aCuenta: ''
-            } 
+            },
+            editModalIsOpen: false,
+            diagosticoToEdit: {} 
         }
 
         this.openDiagnosisModal = this.openDiagnosisModal.bind(this)
         this.closeDiagnosisModal = this.closeDiagnosisModal.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.openEditDiagnosisModal = this.openEditDiagnosisModal.bind(this)
+        this.closeEditModal = this.closeEditModal.bind(this)
+        this.handleDeleteDiagnosis = this.handleDeleteDiagnosis.bind(this)
     }
    
     openDiagnosisModal(e) {
@@ -47,6 +53,20 @@ class ClientDetails extends Component {
         })
     }
 
+    openEditDiagnosisModal(key){
+        const filteredDiagnostico = this.state.diagnosticos.filter(diagnostico => {
+            return diagnostico._id === key 
+        })
+        this.setState({
+            editModalIsOpen: true,
+            diagosticoToEdit: filteredDiagnostico[0]
+        })
+    }
+
+    closeEditModal(e){
+        this.setState({editModalIsOpen: false})
+    }
+
     handleChange(e){
         let {name, value} = e.target
         this.setState({
@@ -58,28 +78,42 @@ class ClientDetails extends Component {
     }
 
     handleSubmit(e){
-        fetch('api/diagnosticos', {
-            method: 'POST',
-            body: JSON.stringify(this.state.newDiagnosisForm),
-            headers: {
-                'Accept': 'application/json',
-                'Content-type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then(res => console.log(res))
-            .then(() => {
-                getPacienteDiagnosis('api/diagnosticos')
+        postNewDiagnosis('api/diagnosticos', this.state.newDiagnosisForm)
+            .then(res => {
+                console.log(res.status)
+                getPacienteDiagnosis(`api/diagnosticos/?paciente=${this.props.match.params.pacienteId}`)
                 .then(diagnosticos => {
-                    const filteredDiagnosis = diagnosticos.filter(diagnostico => diagnostico.paciente._id === this.props.match.params.pacienteId)
                     this.setState({
-                        diagnosticos: filteredDiagnosis,
-                        newDiagnosisIsOpened: false
-                    }) 
+                        diagnosticos: diagnosticos,
+                        newDiagnosisIsOpened: false,
+                        newDiagnosisForm: {
+                            paciente: this.props.match.params.pacienteId,
+                            diagnostico: '',
+                            tratamiento: '',
+                            piezaDentaria: '',
+                            cuota: '',
+                            aCuenta: ''
+                        }
+                    })
                 })
                 .catch(err => console.log(err.message))
             })
-            .catch(err => console.log(err))
+    }
+
+    handleDeleteDiagnosis(id){
+        deleteDiagnosis(`api/diagnosticos/${id}`)
+        .then(res => {
+            console.log(res.status)
+            getPacienteDiagnosis(`api/diagnosticos/?paciente=${this.props.match.params.pacienteId}`)
+            .then(diagnosticos => {
+                this.setState({
+                    diagnosticos: diagnosticos,
+                    editModalIsOpen: false
+                })
+            })
+            .catch(err => console.log(err.message))
+        })
+        .catch(err => console.log(err))
     }
 
     componentDidMount(){
@@ -97,12 +131,11 @@ class ClientDetails extends Component {
             })
             .catch(err => console.log('error al conectarse'))
 
-        getPacienteDiagnosis('api/diagnosticos')
+        getPacienteDiagnosis(`api/diagnosticos/?paciente=${this.props.match.params.pacienteId}`)
             .then(diagnosticos => {
-                const filteredDiagnosis = diagnosticos.filter(diagnostico => diagnostico.paciente._id === this.props.match.params.pacienteId)
                 this.setState({
-                    diagnosticos: filteredDiagnosis
-                }) 
+                    diagnosticos: diagnosticos
+                })
             })
             .catch(err => console.log(err.message))
     }
@@ -170,12 +203,17 @@ class ClientDetails extends Component {
                     </div>
                     <div className="historial-data-container-down">
                         <DiagnosisList 
-                            openDiagnosisEdit={this.openDiagnosisModal}
+                            openDiagnosisEdit={this.openEditDiagnosisModal}
                             diagnosticos={this.state.diagnosticos}
                         />
                     </div>
                 </div>
-
+                <EditDiagnosisModal 
+                    isOpen={this.state.editModalIsOpen}
+                    closeModal={this.closeEditModal}
+                    toEdit={this.state.diagosticoToEdit}
+                    deleteDiagnosis={this.handleDeleteDiagnosis}
+                />
             </div>
         )
     }

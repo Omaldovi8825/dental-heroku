@@ -46,11 +46,17 @@
 }
 
 .new-diagnosis-area th, td {
-    border: 1px solid black;
+    border: 1px solid #7f3063;
+}
+
+.new-diagnosis-area th{
+    background-color: #7f3063;
+    color: white;
 }
 
 .new-diagnosis-area input {
     width: 100%;
+    padding: 20px 0;
 }
 
 .new-diagnosis-area th:nth-child(3){

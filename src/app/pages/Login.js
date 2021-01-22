@@ -8,8 +8,8 @@ const Login = (props) => {
     const [user, setUser] = useState('')
     const [passwoord, setPassword ] = useState('')
 
-    const usuario = ''
-    const contrasena = ''
+    const usuario = 'dental'
+    const contrasena = 'caries'
 
     return(
         <form className="login-Form">
