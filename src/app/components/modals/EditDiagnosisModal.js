@@ -3,7 +3,7 @@ import {createPortal} from 'react-dom'
 
 import './styles/EditDiagnosisModal.css'
 
-const EditDiagnosisModal = ({isOpen, closeModal, toEdit, deleteDiagnosis}) => {
+const EditDiagnosisModal = ({isOpen, closeModal, toEdit, deleteDiagnosis, updateDiagnosis, handleChange}) => {
 
     if(!isOpen){
         return null
@@ -31,14 +31,16 @@ const EditDiagnosisModal = ({isOpen, closeModal, toEdit, deleteDiagnosis}) => {
                                 <input 
                                     type="text" 
                                     name="diagnostico"
-                                    placeholder={diagnostico}   
+                                    placeholder={diagnostico}
+                                    onChange={handleChange}   
                                 />
                             </td>
                             <td>
                                 <input 
                                     type="text"
                                     name="tratamiento"
-                                    placeholder={tratamiento}   
+                                    placeholder={tratamiento}
+                                    onChange={handleChange}      
                                 />
                             </td>
                             <td>
@@ -47,6 +49,7 @@ const EditDiagnosisModal = ({isOpen, closeModal, toEdit, deleteDiagnosis}) => {
                                     style={{textAlign: 'center'}}
                                     name="piezaDentaria"
                                     placeholder={piezaDentaria}
+                                    onChange={handleChange}   
                                 />
                             </td>
                             <td>
@@ -55,6 +58,7 @@ const EditDiagnosisModal = ({isOpen, closeModal, toEdit, deleteDiagnosis}) => {
                                     style={{textAlign: 'center'}}
                                     name="cuota"
                                     placeholder={cuota}
+                                    onChange={handleChange}   
                                 />
                             </td>
                             <td>
@@ -63,6 +67,7 @@ const EditDiagnosisModal = ({isOpen, closeModal, toEdit, deleteDiagnosis}) => {
                                     style={{textAlign: 'center'}}
                                     name="aCuenta"
                                     placeholder={aCuenta}
+                                    onChange={handleChange}   
                                 />
                             </td>
                         </tr>
@@ -72,7 +77,7 @@ const EditDiagnosisModal = ({isOpen, closeModal, toEdit, deleteDiagnosis}) => {
             <div className="edit-diagnosis">
                 <button 
                     type="button"
-                    // onClick={saveNewDiagnosis}
+                    onClick={() => updateDiagnosis(_id)}
                 >
                     Guardar
                 </button>

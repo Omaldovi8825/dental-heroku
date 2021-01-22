@@ -6,7 +6,7 @@ import NewDiagnosis from '../components/NewDiagnosis'
 import DiagnosisList from '../components/DiagnosisList'
 import EditDiagnosisModal from '../components/modals/EditDiagnosisModal'
 
-import {getPacienteData, getPacienteDiagnosis, deleteDiagnosis, postNewDiagnosis} from '../apiCalls'
+import {getPacienteData, getPacienteDiagnosis, deleteDiagnosis, postNewDiagnosis, updateDiagnosis} from '../apiCalls'
 
 import './styles/PacienteDetails.css'
 
@@ -29,7 +29,8 @@ class ClientDetails extends Component {
                 aCuenta: ''
             },
             editModalIsOpen: false,
-            diagosticoToEdit: {} 
+            diagosticoToEdit: {},
+            diagnosisModifications: {} 
         }
 
         this.openDiagnosisModal = this.openDiagnosisModal.bind(this)
@@ -39,6 +40,8 @@ class ClientDetails extends Component {
         this.openEditDiagnosisModal = this.openEditDiagnosisModal.bind(this)
         this.closeEditModal = this.closeEditModal.bind(this)
         this.handleDeleteDiagnosis = this.handleDeleteDiagnosis.bind(this)
+        this.handleUpdateDiagnosis = this.handleUpdateDiagnosis.bind(this)
+        this.handleEditDiagnosisChange = this.handleEditDiagnosisChange.bind(this)
     }
    
     openDiagnosisModal(e) {
@@ -77,6 +80,16 @@ class ClientDetails extends Component {
         })
     }
 
+    handleEditDiagnosisChange(e){
+        let {name, value} = e.target
+        this.setState({
+            diagnosisModifications: {
+                ...this.state.diagnosisModifications,
+                [name]: value
+            }
+        })
+    }
+
     handleSubmit(e){
         postNewDiagnosis('api/diagnosticos', this.state.newDiagnosisForm)
             .then(res => {
@@ -109,6 +122,23 @@ class ClientDetails extends Component {
                 this.setState({
                     diagnosticos: diagnosticos,
                     editModalIsOpen: false
+                })
+            })
+            .catch(err => console.log(err.message))
+        })
+        .catch(err => console.log(err))
+    }
+
+    handleUpdateDiagnosis(id){
+        updateDiagnosis(`api/diagnosticos/${id}`, this.state.diagnosisModifications)
+        .then(res => {
+            console.log(res.status)
+            getPacienteDiagnosis(`api/diagnosticos/?paciente=${this.props.match.params.pacienteId}`)
+            .then(diagnosticos => {
+                this.setState({
+                    diagnosticos: diagnosticos,
+                    editModalIsOpen: false,
+                    diagnosisModifications: {}
                 })
             })
             .catch(err => console.log(err.message))
@@ -213,6 +243,8 @@ class ClientDetails extends Component {
                     closeModal={this.closeEditModal}
                     toEdit={this.state.diagosticoToEdit}
                     deleteDiagnosis={this.handleDeleteDiagnosis}
+                    updateDiagnosis={this.handleUpdateDiagnosis}
+                    handleChange={this.handleEditDiagnosisChange}
                 />
             </div>
         )

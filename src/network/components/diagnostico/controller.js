@@ -25,6 +25,16 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.put('/:id', async (req, res) => {
+    try {
+        const infoToUpdate = req.body
+        await Diagnostico.findByIdAndUpdate(req.params.id, infoToUpdate)
+        res.status(200).send({status: 'diagnostico actualizado'})
+    } catch (error) {
+        res.status(400).send({status: 'no se pudo actualizar diagnostico'})
+    }
+})
+
 router.delete('/:id', async (req, res) => {
     try {
         await Diagnostico.findByIdAndRemove(req.params.id)

@@ -44,7 +44,10 @@
 }
 
 .historial-data-container-down{
-    margin-top: 24px;
+    margin: 24px 0 50px;
+    height: 300px;
+    overflow: auto;
+    background-color: aliceblue;
 }
 
 .historial-id-data{

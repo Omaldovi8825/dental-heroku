@@ -1,10 +1,11 @@
 .diagnosis-table{
     width: 100%;
     border-collapse: collapse;
+
 }
 
 .diagnosis-table th{
-    /* border: 1px solid #7f3063; */
+    border: 1px solid #7f3063;
     background-color: #7f3063;
     color: white;
 }

@@ -17,6 +17,7 @@
     margin-bottom: 10px;
     background-color: #7f6b79;
     color: white;
+    height: 238px;
 }
 
 .card-container-up:hover{
@@ -41,10 +42,23 @@
     background-color: #75c6b8;;
     padding: 5px;
     color: #7f3063;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .card-container-down:hover {
     /* border: 8px solid #7f3063; */
     background-color: #7f3063;
     color: white;
+}
+
+.card-container-down p {
+    margin: 0;
+}
+
+.card-container-down p:first-child {
+    font-weight: bold;
 }

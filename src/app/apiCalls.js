@@ -45,6 +45,22 @@ export function postNewDiagnosis(url, newDiagnosis){
     })
 }
 
+export function updateDiagnosis(url, infoToUpdate){
+    return new Promise((resolve, reject) => {
+        fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify(infoToUpdate),
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            }
+        })
+        .then(data => data.json())
+        .then(data => resolve(data))
+        .catch(err => reject(err))
+    })
+}
+
 
 
 

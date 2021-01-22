@@ -4,7 +4,7 @@ import SearhCard from './SearchCard'
 const SearchCardList = ({pacientes}) => {
     if(pacientes.length === 0){
         return (
-            <h1>No hay coincidencias</h1>
+            <h1 style={{textAlign: 'center'}}>No hay coincidencias</h1>
         )
     }
 
