@@ -1,7 +1,16 @@
 import React from 'react'
 import SearhCard from './SearchCard'
 
-const SearchCardList = ({pacientes}) => {
+import Loader from '../components/Loader'
+
+const SearchCardList = ({pacientes, loading}) => {
+    
+    if(loading){
+        return (
+            <Loader />
+            )
+        }
+        
     if(pacientes.length === 0){
         return (
             <h1 style={{textAlign: 'center'}}>No hay coincidencias</h1>

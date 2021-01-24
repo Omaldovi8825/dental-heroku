@@ -3,5 +3,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     /* background-image: url('https://i.ibb.co/h7TSVWn/denti-foto.png'); */
+    min-height: calc(100vh - 180px);
+    padding-top: 20px;
 }
 

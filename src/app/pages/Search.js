@@ -11,7 +11,8 @@ class Search extends Component {
         super()
         this.state = {
             pacientes: [],
-            filteredPacientes: []
+            filteredPacientes: [],
+            loading: true
         }
         this.handleSearch = this.handleSearch.bind(this)
     }
@@ -20,7 +21,8 @@ class Search extends Component {
         fetch('/api/pacientes')
             .then(res => res.json())
             .then(res => this.setState({
-                pacientes: res
+                pacientes: res,
+                loading: false
             }))
             .then(res => this.setState({
                 filteredPacientes: this.state.pacientes
@@ -41,7 +43,10 @@ class Search extends Component {
         return(
             <div>
                 <SearchHeader handleSearch={this.handleSearch}/>
-                <SearchCardList pacientes={this.state.filteredPacientes}/>
+                <SearchCardList 
+                    pacientes={this.state.filteredPacientes}
+                    loading={this.state.loading}
+                />
             </div>
         )
     }

@@ -1,0 +1,62 @@
+
+.container-loader {
+    height: calc(100vh - 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    width: 12em;
+    height: 12em;
+    font-size: 25px;
+    border-top: 0.3em solid #75c6b8; 
+    border-radius: 50%;
+    position: relative;
+    animation: rotating 2s ease-in-out infinite;
+    --direction: 1;
+    /* background-image: URL(https://i.ibb.co/HKZpPN7/denti-home.png); */
+}
+
+.loader::before,
+.loader::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    box-sizing: border-box;
+    top: -0.2em;
+}
+
+.loader::before {
+    border-top: 0.3em solid #7f3063;
+    transform: rotate(120deg);
+}
+
+.loader::after {
+    border-top: 0.3em solid #01ecfd;
+    transform: rotate(240deg);
+}
+
+.loader span {
+    position: absolute;
+    color:#7f3063;
+    width: inherit;
+    height: inherit;
+    text-align: center;
+    line-height: 10em;
+    font-family: sans-serif;
+    animation: rotating 2s linear infinite;
+    --direction: -1;
+}
+
+@keyframes rotating {
+    50% {
+        transform: rotate(calc(180deg * var(--direction)));
+    }
+
+    100% {
+        transform: rotate(calc(360deg * var(--direction)));
+    }
+}
